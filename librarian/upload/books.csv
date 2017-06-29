@@ -1,1 +1,6 @@
-
+BOOK TITLE,AUTHOR,EDITION,BOOK COPIES,PUBLISHER NAME,STATUS(New/Old/Lost/Damage),DEPT
+Book 1,Author 1,Edition 1,10,Publisher 1,New,IT
+Book 2,Author 2,Edition 2,10,Publisher 2,New,IT
+Book 3,Author 3,Edition 3,10,Publisher 3,Old,IT
+Book 4,Author 4,Edition 4,10,Publisher 4,Old,IT
+Book 5,Author 5,Edition 5,10,Publisher 5,Damage,IT
