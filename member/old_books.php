@@ -1,28 +1,25 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php include('navbar_books.php'); ?>
-<?php
-$title = $_POST['title'];
-/* $category = $_POST['category']; */
-$author = $_POST['author'];
-?>
-
     <div class="container">
 		<div class="margin-top">
 			<div class="row">	
 			<div class="span12">	
-			   	<div class="alert alert-info">
-                	<strong><i class="icon-user icon-large"></i>&nbsp;Books Table</strong>
-                </div>
-					    <ul class="nav nav-pills">
-							<li   class="active"><a href="books.php">All</a></li>
-							<li><a href="new_books.php">New Books</a></li>
-							<li><a href="old_books.php">Old Books</a></li>
-							<li><a href="lost.php">Lost Books</a></li>
-							<li><a href="damage.php">Damage Books</a></li>
-						</ul>
+			   <div class="alert alert-info">
+                                    <strong><i class="icon-user icon-large"></i>&nbsp;Books Table</strong>
+                                </div>
+						<!--  -->
+								    <ul class="nav nav-pills">
+										<li><a href="books.php">All</a></li>
+										<li><a href="borrowed_books.php">Borrowed Books</a></li>
+										<li><a href="new_books.php">New Books</a></li>
+										<li class="active"><a href="old_books.php">Old Books</a></li>
+										<li><a href="lost.php">Lost Books</a></li>
+										<li><a href="damage.php">Damaged Books</a></li>
+									</ul>
+						<!--  -->
 						<center class="title">
-						<h1>Books List</h1>
+						<h1>Old Books</h1>
 						</center>
                             <table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="example">
                                 <thead>
@@ -34,17 +31,14 @@ $author = $_POST['author'];
 										<th class="action">Available</th>
 										<th>Publisher Name</th>
 										<th>Department</th>
-										<th>Status</th>	
+										<th>Status</th>		
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php 
-
-				
-								  $user_query=mysql_query("select * from book where status != 'Archive' and book_title LIKE  '%$title%'
-								  OR status != 'Archive' and author LIKE '%$author%'")or die(mysql_error());
+								 
+                                  <?php  $user_query=mysql_query("select * from book where status = 'old'")or die(mysql_error());
 									while($row=mysql_fetch_array($user_query)){
-									$id=$row['book_id'];  
+									$id=$row['book_id'];
 									$book_copies = $row['book_copies'];
 									
 									$borrow_details = mysql_query("select * from borrowdetails where book_id = '$id' and borrow_status = 'pending'");
@@ -64,7 +58,6 @@ $author = $_POST['author'];
 									<td><?php echo $row['status']; ?></td>
 									<?php include('toolttip_edit_delete.php'); ?>	
 									<?php  }  ?>
-                           
                                 </tbody>
                             </table>
 							
